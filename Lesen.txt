@@ -1,0 +1,111 @@
+Appmidio 1.4.0
+
+Dieses Plugin stellt Daten von Admidio der Android-App Appmidio zur Verfügung.
+ 
+Einstellungen können in der Datei config.php vorgenommen werden.
+
+
+1. Installation
+2. Update
+3. Versionshistorie
+
+******************************************************************************
+
+1.Installation
+
+Zur Installation sind folgende Schritte durchzuführen:
+
+1.1. Im Ordner adm_plugins einen neuen Ordner mit dem Namen appmidio erstellen.
+
+1.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio_1.4.0.zip in diesen Ordner kopieren.
+
+1.3. Die Datei config_sample.php in config.php umbenenen und den eigenen Bedürfnissen anpassen.
+
+1.4. Zur Kontrolle, ob das Plugin sauber ansprechbar ist, in der Datei my_body_bottom.php folgende Zeile einfügen:
+     include(SERVER_PATH."/adm_plugins/appmidio/appmidio.php");
+
+     Hinweise: 
+        (1) Die include-Anweisung sollte nicht innerhalb einer if-Abfrage stehen
+        (2) Wenn das Plugin am richtigen Ort installiert wurde, funktioniert Appmidio auch ohne die Ergänzung 
+            in der Datei my_body_bottom.php
+
+1.5. Admidio starten, wenn der QR-Code von Appmidio auf der Webseite angezeigt wird, ist das Plugin für die 
+     Kommunikation mit der Appmidio-App betriebsbereit.
+
+******************************************************************************
+
+2. Update
+
+Für einen Update des Plugins sind folgende Schritte durchzuführen:
+
+2.1. Alle Dateien im Pluginverzeichnis von appmidio löschen (ausser config.php).
+
+2.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio_1.4.0.zip in diesen Ordner kopieren.
+
+2.3. Die Datei config.php den eigenen Bedürfnissen anpassen. 
+     Als Vorlage kann die Datei config_sample.php verwendet werden.
+
+2.4. Admidio starten, wenn der QR-Code von Appmidio auf der Webseite angezeigt wird, ist das Plugin für die 
+     Kommunikation mit der Appmidio-App betriebsbereit.
+
+******************************************************************************
+
+3. Versionshistorie
+ 
+ * Version 1.4.0: zettem
+ * Datum        : 12.07.2015
+ * Änderung     : - Anpassungen für Admidio 3.0
+ * 
+ * Version 1.3.2: zettem
+ * Datum        : 01.03.2015
+ * Änderung     : - Korrektur für die Anzeige der Geburtstage in der Mitgliederliste
+ *
+ * Version 1.3.0: zettem
+ * Datum        : 08.12.2014
+ * Änderung     : - Neuerungen:
+ *                  - Organisationsauswahl
+ *                  - Suche nach Mitgliedern (nur mit Berechtigung für Benutzerverwaltung)
+ *                  - Sortieren von Mitgliederlisten  (nach Alter oder Nachname oder Vorname)
+ *                - Fehlerkorrekturen/Bugfixes
+ *                  - Umlaute in Terminen
+ *                  - Textbezeichnungen vom Mitgliedsbeitrag-Pluigin
+ *                  - Ermittlung von Jubiläen im get_birthday-Command
+ *                 - div. Optimierungen
+ * 
+ * Version 1.2.0: zettem
+ * Datum        : 02.04.2013    
+ * Änderung     : - Anzeige der Leiter von Rollen
+ *                - Anzeige von Terminen
+ *                - Anpassungen für Admidio 2.4.x
+ * 
+ * Version 1.1.0: zettem
+ * Datum        : 17.02.2013    
+ * Änderung     : - Anzeige eines QRcodes, wenn App in Admidio integriert wird
+ *                - Anzeige von ehemaligen Mitgliedern einer Rolle (über Kontext-Menü)
+ *                - Anzeige einer Geburtstagsliste
+ *                - Anzeige von Ankündigungen
+ *                - Integration von Google-Maps und Google-Navigator
+ *                - und zudem für erste Beta-Tests (muss über config.php aktiviert werden):
+ *                  - Bearbeiten von Profilen (über Admidio-Webseite)
+ *                  - Bearbeiten von Rollenzugehörigkeiten (über Admidio-Webseite)
+ *                  - Mailversand an Rollen (über Admidio-Webseite)
+ *
+ * Version 1.0.3: zettem
+ * Datum        : 23.01.2013    
+ * Änderung     : - noch weitere Sicherheitslücken im Plugin geschlossen (Danke an Admidio Team für die Hinweise)
+ * 
+ * Version 1.0.2: zettem
+ * Datum        : 22.01.2013    
+ * Änderung     : - Sicherheitslücken im Plugin geschlossen (Danke an Admidio Team für die Hinweise)
+ * 
+ * Version 1.0.1: zettem
+ * Datum        : 19.01.2013    
+ * Änderung     : - inaktive Rollen werden nicht mehr an die App übermittelt
+ *                - nur noch Anzeige von Rollenzuordnungen gem. Berechtigung
+ *                - keine Fehlermeldung mehr bei Einbau des Plugins in die Admidio-Seite 
+ * 
+ * Version 1.0.0: zettem
+ * Datum        : 12.01.2013
+ *    
+
+
