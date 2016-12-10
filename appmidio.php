@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.5.1
+ * Version 1.6.0
  *
  * Plugin das für die Android-App Appmidio
  *
@@ -71,12 +71,16 @@
  *
  * Version 1.5.0: fasse
  * Datum        : 07.02.2016
- * Änderung     : - Anpassungen für Admidio 3.0
+ * Änderung     : - Anpassungen für Admidio 3.1
+ *
+ * Version 1.6.0: fasse
+ * Datum        : 10.12.2016
+ * Änderung     : - Anpassungen für Admidio 3.2
  *
 *****************************************************************************/
 
 $plugin_version    = '1.5.0';
-$plugin_debug      = 0;
+$plugin_debug      = 1;
 $possible_commands = array(
 						'gp'  => 'get_preferences',
 						'go'  => 'get_organisations',

@@ -23,14 +23,14 @@ function sql_command()
 	if($gValidLogin == false)
 	{
 		msg_unauthorized();
-	} 
+	}
 	else if($gPreferences['enable_dates_module'] == 0)
 	{
 		// das Modul ist deaktiviert
 		// $gMessage->show($gL10n->get('SYS_MODULE_DISABLED'));
 		msg_not_found('Das Modul Termine ist deaktiviert.');
 	}
-	else 
+	else
 	{
 		$sql = "SELECT ";
 		$sql = $sql."	dat_id ";
@@ -44,11 +44,11 @@ function sql_command()
 		$sql = $sql."	, IFNULL(dat_country, '') AS dat_country ";
 		$sql = $sql."	, IFNULL(room_name, '') AS room_name ";
 		$sql = $sql."	, dat_timestamp_create ";
-		$sql = $sql."	, dat_usr_id_create "; 
+		$sql = $sql."	, dat_usr_id_create ";
 		$sql = $sql."	, IFNULL(f1.usd_value, '') AS cre_first_name ";
 		$sql = $sql."	, IFNULL(f2.usd_value, '') AS cre_last_name ";
 		$sql = $sql."	, dat_timestamp_change ";
-		$sql = $sql."	, dat_usr_id_change "; 
+		$sql = $sql."	, dat_usr_id_change ";
 		$sql = $sql."	, IFNULL(f3.usd_value, '') AS upd_first_name ";
 		$sql = $sql."	, IFNULL(f4.usd_value, '') AS upd_last_name ";
 		$sql = $sql."FROM ";

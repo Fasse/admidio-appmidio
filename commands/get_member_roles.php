@@ -22,9 +22,9 @@ function sql_command()
 
 	// Initialize and check the parameters
 	$authorizedUser = true;
-	if ($plugin_debug) 
+	if ($plugin_debug)
 	{
-		$getUserId = $_REQUEST['usr_id']; 
+		$getUserId = $_REQUEST['usr_id'];
 	} else {
 		$getUserId = admFuncVariableIsValid($_POST, 'usr_id', 'numeric', array('requireValue' => true, 'directOutput' => true));
 	}
@@ -33,12 +33,12 @@ function sql_command()
 	{
 		$authorizedUser = false;
 		msg_unauthorized();
-	} 
+	}
 	else if (getCurrentDbVersion() >= '3.0.0')
 	{
 		// create user object
 		$user = new User($gDb, $gProfileFields, $getUserId);
-		
+
 		// check rights for Admidio 3.0.x and higher
 		if(!$gCurrentUser->hasRightViewProfile($user))
 		{
@@ -51,7 +51,7 @@ function sql_command()
 	{
 		// create user object
 		$user = new User($gDb, $gProfileFields, $getUserId);
-		
+
 		// check rights for Admidio 2.4.x and higher
 		if(!$gCurrentUser->viewProfile($user))
 		{
@@ -60,7 +60,7 @@ function sql_command()
 			msg_forbidden('Keine Berechtigung, die Daten dieses Profils anzuzeigen.');
 		}
 	}
-	else 
+	else
 	{
 		// check rights for Admidio 2.3.x
 		if(!$gCurrentUser->viewProfile($getUserId))

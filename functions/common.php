@@ -22,7 +22,7 @@ function json_result ($sql = '')
 	$output = '';
 	if($sql != '')
 	{
-		// Daten aus der DB abfragen 
+		// Daten aus der DB abfragen
 		// SYS_-Bezeichnungen werden mit den sprachabhängigen Bezeichnungen ersetzt
 		$resultStatement = $gDb->query($sql);
 		while($row = $resultStatement->fetch(PDO::FETCH_ASSOC))
@@ -30,36 +30,36 @@ function json_result ($sql = '')
 			$usf_id = 0;
 			foreach($row as $key => $val)
 			{
-				// bei jeder Spalte ausser bei der Spalte usf_name_intern wird der Wert "übersetzt" 
+				// bei jeder Spalte ausser bei der Spalte usf_name_intern wird der Wert "übersetzt"
 				if ($key != 'usf_name_intern')
 				{
 					if ((substr($row[$key], 0, 4) == "SYS_") || (substr($row[$key], 0, 4) == "INS_") || (substr($row[$key], 0, 4) == "PMB_"))
 					{
 						$row[$key] = $gL10n->get($row[$key]);
 					}
-				} 
-				if ($key == 'usf_id') 
+				}
+				if ($key == 'usf_id')
 				{
 					$usf_id = $row[$key];
-				} 
-				if ($key == 'usd_value' && $usf_id > 0) 
+				}
+				if ($key == 'usd_value' && $usf_id > 0)
 				{
 					// wenn es sich bei dem Daten um das Land handelt, wird der Ländercode durch die Bezeichnung ersetzt
 					if ($usf_id == $gProfileFields->getProperty('COUNTRY', 'usf_id'))
 					{
 						$row['usd_value'] = $gL10n->getCountryByCode($row['usd_value']);
-					} 
+					}
 					elseif ($gProfileFields->getPropertyById($usf_id, 'usf_type') == 'DROPDOWN'
-					||      $gProfileFields->getPropertyById($usf_id, 'usf_type') == 'RADIO_BUTTON') 
+					||      $gProfileFields->getPropertyById($usf_id, 'usf_type') == 'RADIO_BUTTON')
 					{
 						// show selected text of optionfield or combobox
 						$arrListValues = $gProfileFields->getPropertyById($usf_id, 'usf_value_list', 'text');
 						$row['usd_value'] = $arrListValues[$row['usd_value']];
 					}
 				}
-				if ($key == 'dat_country') 
+				if ($key == 'dat_country')
 				{
-					if (isset($row['dat_country']) && $row['dat_country'].'' != '') 
+					if (isset($row['dat_country']) && $row['dat_country'].'' != '')
 					{
 						$row['dat_country'] = $gL10n->getCountryByCode($row['dat_country']);
 					}
@@ -110,7 +110,7 @@ function getCurrentDbVersion ()
 		$sql = $sql."	AND com_name_intern = 'CORE' ";
 	}
 
-	// Daten aus der DB abfragen 
+	// Daten aus der DB abfragen
 	$resultStatement = $gDb->query($sql);
 	$row = $resultStatement->fetch(PDO::FETCH_ASSOC);
 

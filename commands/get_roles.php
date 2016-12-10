@@ -23,8 +23,8 @@ function sql_command()
 	if($gValidLogin == false)
 	{
 		msg_unauthorized();
-	} 
-	else 
+	}
+	else
 	{
 	 	$sql = "SELECT ";
 		$sql = $sql."	cat_id ";

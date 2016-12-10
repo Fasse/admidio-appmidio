@@ -22,9 +22,9 @@ function sql_command()
 
 	// Initialize and check the parameters
 	$getQuery = '';
-	if ($plugin_debug) 
+	if ($plugin_debug)
 	{
-		$getQuery = $_REQUEST['q']; 
+		$getQuery = $_REQUEST['q'];
 	} else {
 		$getQuery = admFuncVariableIsValid($_POST, 'q', 'string', array('defaultValue' => '', 'directOutput' => false));
 	}
@@ -32,14 +32,14 @@ function sql_command()
 	if($gValidLogin == false)
 	{
 		msg_unauthorized();
-	} 
+	}
 	else if($gCurrentUser->editUsers() == false)
 	{
 		//$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 		$gMessage = 'Keine Berechtigung, direkt nach Benutzern zu suchen';
 		msg_forbidden('Keine Berechtigung, direkt nach Benutzern zu suchen.');
 	}
-	else 
+	else
 	{
 		$sql = "SELECT ";
 		$sql = $sql."	usr_id ";
@@ -59,7 +59,7 @@ function sql_command()
 		$sql = $sql."	) AND (SELECT count(*) FROM ".$g_tbl_praefix."_members INNER JOIN ".$g_tbl_praefix."_roles ON rol_id = mem_rol_id INNER JOIN ".$g_tbl_praefix."_categories ON cat_id = rol_cat_id WHERE mem_usr_id = usr_id AND rol_valid = 1 AND cat_org_id = ".$gCurrentOrganization->getValue('org_id').") > 0 ";
 		$sql = $sql."ORDER BY ";
 		$sql = $sql."	(SELECT (count(*) > 0) FROM ".$g_tbl_praefix."_members INNER JOIN ".$g_tbl_praefix."_roles ON rol_id = mem_rol_id INNER JOIN ".$g_tbl_praefix."_categories ON cat_id = rol_cat_id WHERE mem_usr_id = usr_id AND mem_end = '9999-12-31' AND rol_valid = 1 AND cat_org_id = ".$gCurrentOrganization->getValue('org_id').") DESC ";
-		
+
 		return $sql;
 	}
 }

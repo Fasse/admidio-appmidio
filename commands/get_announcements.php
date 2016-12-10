@@ -32,23 +32,22 @@ function sql_command()
 	}
 	else
 	{
-		$sql = "SELECT ";
-		$sql = $sql."	ann_id ";
-		$sql = $sql."	, ann_headline ";
-		$sql = $sql."	, ann_description ";
-		$sql = $sql."	, ann_timestamp_create ";
-		$sql = $sql."   , ann_usr_id_create ";
-		$sql = $sql."	, IFNULL(f1.usd_value, '') AS cre_first_name ";
-		$sql = $sql."	, IFNULL(f2.usd_value, '') AS cre_last_name ";
-		$sql = $sql." FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_announcements ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f1 ON f1.usd_usr_id = ann_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f2 ON f2.usd_usr_id = ann_usr_id_create AND f2.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
-		$sql = $sql." WHERE ";
-		$sql = $sql."	ann_global = 1 ";
-		$sql = $sql."	OR ann_org_id = ".$gCurrentOrganization->getValue('org_id');
-		$sql = $sql." ORDER BY ";
-		$sql = $sql."	ann_timestamp_create DESC ";
+		$sql = 'SELECT ';
+		$sql = $sql.'	ann_id ';
+		$sql = $sql.'	, ann_headline ';
+		$sql = $sql.'	, ann_description ';
+		$sql = $sql.'	, ann_timestamp_create ';
+		$sql = $sql.'   , ann_usr_id_create ';
+		$sql = $sql.'	, IFNULL(f1.usd_value, \'\') AS cre_first_name ';
+		$sql = $sql.'	, IFNULL(f2.usd_value, \'\') AS cre_last_name ';
+		$sql = $sql.' FROM ';
+		$sql = $sql.'	'.TBL_ANNOUNCEMENTS;
+		$sql = $sql.'	LEFT JOIN '.TBL_CATEGORIES.' ON cat_id = ann_cat_id ';
+		$sql = $sql.'	LEFT JOIN '.TBL_USER_DATA.' AS f1 ON f1.usd_usr_id = ann_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'FIRST_NAME\') ';
+		$sql = $sql.'	LEFT JOIN '.TBL_USER_DATA.' AS f2 ON f2.usd_usr_id = ann_usr_id_create AND f2.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'LAST_NAME\') ';
+		$sql = $sql.' WHERE ann_global = 1 ';
+		$sql = $sql.'	 OR cat_org_id = '.$gCurrentOrganization->getValue('org_id');
+		$sql = $sql.' ORDER BY ann_timestamp_create DESC ';
 
 		return $sql;
 	}

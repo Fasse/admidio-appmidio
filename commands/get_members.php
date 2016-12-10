@@ -28,19 +28,19 @@ function sql_command()
 	// Initialize and check the parameters
 	$getOrderBy = '';
 	$getExMembers = 0;
-	if ($plugin_debug) 
+	if ($plugin_debug)
 	{
-		$getRoleId = $_REQUEST['rol_id']; 
+		$getRoleId = $_REQUEST['rol_id'];
 		if(isset($_REQUEST['ex'])) {
-			$getExMembers = $_REQUEST['ex']; 
+			$getExMembers = $_REQUEST['ex'];
 		}
 		if(isset($_REQUEST['orderby'])) {
-			$getOrderBy = $_REQUEST['orderby']; 
+			$getOrderBy = $_REQUEST['orderby'];
 		}
 	} else {
 		$getRoleId = admFuncVariableIsValid($_POST, 'rol_id', 'numeric', array('requireValue' => true, 'directOutput' => true));
 		if(isset($_POST['ex'])) {
-			$getExMembers = admFuncVariableIsValid($_POST, 'ex', 'numeric', array('directOutput' => true));			
+			$getExMembers = admFuncVariableIsValid($_POST, 'ex', 'numeric', array('directOutput' => true));
 		}
 		if(isset($_POST['orderby'])) {
 			$getOrderBy = admFuncVariableIsValid($_POST, 'orderby', 'string', array('defaultValue' => '', 'validValues' => array('first_name, last_name', 'last_name, first_name'), 'directOutput' => true));
@@ -52,14 +52,14 @@ function sql_command()
 	if($gValidLogin == false)
 	{
 		msg_unauthorized();
-	} 
+	}
 	else if($role->viewRole() == false)
 	{
 		//$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 		$gMessage = 'keine Berechtigung, die Daten dieser Rolle anzuzeigen';
 		msg_forbidden('Keine Berechtigung, die Daten dieser Rolle anzuzeigen.');
 	}
-	else 
+	else
 	{
 		$sql = "SELECT ";
 		$sql = $sql."	mem_usr_id AS usr_id ";
