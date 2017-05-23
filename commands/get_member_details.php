@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio Command get_member_details.php
  *
- * Version 1.4.0
- *
  * Funktion fuer das Admidio-Plugin Appmidio, um die Details eines Mitgliedes auszulesen
  *
  * Copyright    : (c) 2013-2015 The Zettem Team

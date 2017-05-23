@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.1.0
- *
  * Erstellt für die Appmido-App den QR-Code für die Anzeige im Plugin
  *
  * Übergaben:

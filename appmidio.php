@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.6.0
+ * Version 1.6.1
  *
  * Plugin das für die Android-App Appmidio
  *
@@ -76,6 +76,10 @@
  * Version 1.6.0: fasse
  * Datum        : 10.12.2016
  * Änderung     : - Anpassungen für Admidio 3.2
+ *
+ * Version 1.6.1: fasse
+ * Datum        : 23.05.2017
+ * Änderung     : - Fix problem with PHP 7
  *
 *****************************************************************************/
 

@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio Command get_preferences.php
  *
- * Version 1.4.0
- *
  * Funktion fuer das Admidio-Plugin Appmidio, um die aktuellen Einstellungen auszulesen
  *
  * Copyright    : (c) 2013-2015 The Zettem Team

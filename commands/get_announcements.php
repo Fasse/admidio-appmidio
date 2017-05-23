@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio Command get_announcements.php
  *
- * Version 1.4.0
- *
  * Funktion fuer das Admidio-Plugin Appmidio, um die Ankündigungen auszulesen
  *
  * Copyright    : (c) 2013-2015 The Zettem Team

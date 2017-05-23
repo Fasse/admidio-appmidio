@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.4.0
- *
  * JSON-Funktionen fuer das Admidio-Plugin Appmidio
  *
  * Copyright    : (c) 2013-2015 The Zettem Team

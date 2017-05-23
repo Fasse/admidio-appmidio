@@ -2,8 +2,6 @@
 /******************************************************************************
  * Appmidio Command get_dates.php
  *
- * Version 1.4.0
- *
  * Funktion fuer das Admidio-Plugin Appmidio, um die Termine auszulesen
  *
  * Copyright    : (c) 2013-2014 The Zettem Team
