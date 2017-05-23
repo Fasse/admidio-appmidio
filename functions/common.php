@@ -19,8 +19,9 @@ function json_result ($sql = '')
 {
  	global $gDb, $gL10n, $gProfileFields;
 
-	$output = '';
-	if($sql != '')
+	$output = array();
+
+	if($sql !== '')
 	{
 		// Daten aus der DB abfragen
 		// SYS_-Bezeichnungen werden mit den sprachabhängigen Bezeichnungen ersetzt
@@ -65,12 +66,12 @@ function json_result ($sql = '')
 					}
 				}
 			}
-			$output[]=$row;
+			$output[] = $row;
 		}
 	}
-	if ($output == '')
+	if (count($output) === 0)
 	{
-		return $output;
+		return '';
 	}
 	else
 	{
