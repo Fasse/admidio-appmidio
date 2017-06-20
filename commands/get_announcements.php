@@ -16,7 +16,7 @@ require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
 
 function sql_command()
 {
-	global $gValidLogin, $gPreferences, $g_tbl_praefix, $gCurrentOrganization;
+	global $gValidLogin, $gPreferences, $gCurrentUser;
 
 	if($gValidLogin == false)
 	{
@@ -41,8 +41,7 @@ function sql_command()
                   LEFT JOIN '.TBL_CATEGORIES.' ON cat_id = ann_cat_id 
         		  LEFT JOIN '.TBL_USER_DATA.' AS f1 ON f1.usd_usr_id = ann_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'FIRST_NAME\') 
                   LEFT JOIN '.TBL_USER_DATA.' AS f2 ON f2.usd_usr_id = ann_usr_id_create AND f2.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'LAST_NAME\') 
-                 WHERE (  cat_org_id = '.$gCurrentOrganization->getValue('org_id').'
-                       OR cat_org_id IS NULL )
+                 WHERE ann_cat_id IN ('.implode(',', array_merge(array(0), $gCurrentUser->getAllVisibleCategories('ANN'))).')
                  ORDER BY ann_timestamp_create DESC ';
 
 		return $sql;
