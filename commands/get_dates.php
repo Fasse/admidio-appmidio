@@ -30,42 +30,39 @@ function sql_command()
 	}
 	else
 	{
-		$sql = "SELECT ";
-		$sql = $sql."	dat_id ";
-		$sql = $sql."	, cat_name ";
-		$sql = $sql."	, dat_headline ";
-		$sql = $sql."	, IFNULL(dat_description, '') AS dat_description ";
-		$sql = $sql."	, dat_begin ";
-		$sql = $sql."	, dat_end ";
-		$sql = $sql."	, dat_all_day ";
-		$sql = $sql."	, IFNULL(dat_location, '') AS dat_location ";
-		$sql = $sql."	, IFNULL(dat_country, '') AS dat_country ";
-		$sql = $sql."	, IFNULL(room_name, '') AS room_name ";
-		$sql = $sql."	, dat_timestamp_create ";
-		$sql = $sql."	, dat_usr_id_create ";
-		$sql = $sql."	, IFNULL(f1.usd_value, '') AS cre_first_name ";
-		$sql = $sql."	, IFNULL(f2.usd_value, '') AS cre_last_name ";
-		$sql = $sql."	, dat_timestamp_change ";
-		$sql = $sql."	, dat_usr_id_change ";
-		$sql = $sql."	, IFNULL(f3.usd_value, '') AS upd_first_name ";
-		$sql = $sql."	, IFNULL(f4.usd_value, '') AS upd_last_name ";
-		$sql = $sql."FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_dates ";
-		$sql = $sql."	JOIN ".$g_tbl_praefix."_categories ON cat_id = dat_cat_id ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_rooms ON room_id = dat_room_id ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f1 ON f1.usd_usr_id = dat_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f2 ON f2.usd_usr_id = dat_usr_id_create AND f2.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f3 ON f3.usd_usr_id = dat_usr_id_change AND f3.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f4 ON f4.usd_usr_id = dat_usr_id_change AND f4.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
-		$sql = $sql."WHERE ";
-		$sql = $sql."	(dat_begin >= '".DATE_NOW." 00:00:00' OR dat_end > '".DATE_NOW." 00:00:00') ";
-		$sql = $sql."	AND (dat_global = 1 ";
-		$sql = $sql."   OR dat_id IN (SELECT dtr_dat_id FROM ".$g_tbl_praefix."_date_role LEFT JOIN ".$g_tbl_praefix."_members ON mem_rol_id = dtr_rol_id WHERE dtr_rol_id IS NULL OR mem_usr_id = ".$gCurrentUser->getValue('usr_id').")) ";
-		$sql = $sql."ORDER BY ";
-		$sql = $sql."	dat_begin ";
+		$sql = 'SELECT dat_id 
+                     , cat_name 
+                     , dat_headline 
+                     , IFNULL(dat_description, '') AS dat_description 
+                     , dat_begin 
+                     , dat_end 
+                     , dat_all_day 
+                     , IFNULL(dat_location, '') AS dat_location 
+                     , IFNULL(dat_country, '') AS dat_country 
+                     , IFNULL(room_name, '') AS room_name 
+                     , dat_timestamp_create 
+                     , dat_usr_id_create 
+                     , IFNULL(f1.usd_value, '') AS cre_first_name 
+                     , IFNULL(f2.usd_value, '') AS cre_last_name 
+                     , dat_timestamp_change 
+                     , dat_usr_id_change 
+                     , IFNULL(f3.usd_value, '') AS upd_first_name 
+                     , IFNULL(f4.usd_value, '') AS upd_last_name 
+                  FROM '.TBL_DATES.' 
+                  JOIN '.TBL_CATEGORIES.' ON cat_id = dat_cat_id
+                  LEFT JOIN '.TBL_ROOMS.' ON room_id = dat_room_id 
+                  LEFT JOIN '.TBL_USER_DATA.' AS f1 ON f1.usd_usr_id = dat_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') 
+                  LEFT JOIN '.TBL_USER_DATA.' AS f2 ON f2.usd_usr_id = dat_usr_id_create AND f2.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') 
+                  LEFT JOIN '.TBL_USER_DATA.' AS f3 ON f3.usd_usr_id = dat_usr_id_change AND f3.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') 
+                  LEFT JOIN '.TBL_USER_DATA.' AS f4 ON f4.usd_usr_id = dat_usr_id_change AND f4.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') 
+                 WHERE (dat_begin >= '".DATE_NOW." 00:00:00' OR dat_end > '".DATE_NOW." 00:00:00') 
+                   AND (  cat_org_id = '.$gCurrentOrganization->getValue('org_id').'
+                       OR cat_org_id IS NULL )
+                 ORDER BY dat_begin ';
 
-		return $sql;
+        return $sql;
 	}
+
 }
 
 ?>
