@@ -2,11 +2,11 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.6.1
+ * Version 1.7.0
  *
  * Plugin das für die Android-App Appmidio
  *
- * Compatible with Admidio version 3.1.x
+ * Compatible with Admidio version 3.3.x
  *
  * Übergaben:
  *
@@ -80,6 +80,10 @@
  * Version 1.6.1: fasse
  * Datum        : 23.05.2017
  * Änderung     : - Fix problem with PHP 7
+ *
+ * Version 1.7.0: fasse
+ * Datum        : 25.02.2018
+ * Änderung     : - Anpassungen für Admidio 3.3
  *
 *****************************************************************************/
 
