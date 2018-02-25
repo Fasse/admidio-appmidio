@@ -16,7 +16,7 @@ require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
 
 function sql_command()
 {
-	global $plugin_debug, $gDb, $gValidLogin, $gCurrentUser, $gProfileFields, $g_tbl_praefix, $plg_excluded_categories, $plg_excluded_fields;
+	global $plugin_debug, $gDb, $gValidLogin, $gCurrentUser, $gProfileFields, $plg_excluded_categories, $plg_excluded_fields;
 
 	// Initialize and check the parameters
 	$authorizedUser = true;
@@ -79,9 +79,9 @@ function sql_command()
 		$sql = $sql."	, usf_type ";
 		$sql = $sql."	, IFNULL(usd_value, '') AS usd_value ";
 		$sql = $sql."FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_user_data ";
-		$sql = $sql."	INNER JOIN ".$g_tbl_praefix."_user_fields ON usf_id = usd_usf_id ";
-		$sql = $sql."	INNER JOIN ".$g_tbl_praefix."_categories ON cat_id = usf_cat_id ";
+		$sql = $sql."	".TABLE_PREFIX."_user_data ";
+		$sql = $sql."	INNER JOIN ".TABLE_PREFIX."_user_fields ON usf_id = usd_usf_id ";
+		$sql = $sql."	INNER JOIN ".TABLE_PREFIX."_categories ON cat_id = usf_cat_id ";
 		$sql = $sql."WHERE ";
 		$sql = $sql."	usd_usr_id = ".$getUserId." ";
 		if ($gCurrentUser->editUsers() == false)

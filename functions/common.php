@@ -81,17 +81,17 @@ function json_result ($sql = '')
 
 function getCurrentDbVersion ()
 {
- 	global $gDb, $g_tbl_praefix, $g_organization;
+ 	global $gDb, $g_organization;
 
-	if($gDb->query('SELECT 1 FROM '.$g_tbl_praefix.'_components', false) == false)
+	if($gDb->query('SELECT 1 FROM '.TABLE_PREFIX.'_components', false) == false)
 	{
 		// V2
 		// in Admidio version 2 the database version was stored in preferences table
 		$sql = "SELECT ";
 		$sql = $sql."	prf_value AS db_version ";
 		$sql = $sql."FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_preferences ";
-		$sql = $sql."	JOIN ".$g_tbl_praefix."_organizations ON org_id = prf_org_id ";
+		$sql = $sql."	".TABLE_PREFIX."_preferences ";
+		$sql = $sql."	JOIN ".TABLE_PREFIX."_organizations ON org_id = prf_org_id ";
 		$sql = $sql."WHERE ";
 		$sql = $sql."	prf_name = 'db_version' ";
 		$sql = $sql."	AND org_shortname = '".$g_organization."' ";
@@ -103,7 +103,7 @@ function getCurrentDbVersion ()
 		$sql = "SELECT ";
 		$sql = $sql."	com_version AS db_version ";
 		$sql = $sql."FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_components ";
+		$sql = $sql."	".TABLE_PREFIX."_components ";
 		$sql = $sql."WHERE ";
 		$sql = $sql."	com_type = 'SYSTEM' ";
 		$sql = $sql."	AND com_name_intern = 'CORE' ";

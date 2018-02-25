@@ -21,7 +21,7 @@ if (file_exists(PLUGIN_PATH. '/../adm_program/system/classes/tableroles.php')) {
 
 function sql_command()
 {
-	global $plugin_debug, $gValidLogin, $gCurrentUser, $gDb, $gPreferences, $g_tbl_praefix;
+	global $plugin_debug, $gValidLogin, $gCurrentUser, $gDb;
 
 	// Initialize and check the parameters
 	$getOrderBy = '';
@@ -66,14 +66,14 @@ function sql_command()
 		$sql = $sql."	, IFNULL(f3.usd_value, '') AS birthday ";
 		$sql = $sql."	, mem_leader AS mem_leader ";
 		$sql = $sql."FROM ";
-		$sql = $sql."	".$g_tbl_praefix."_members ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f1 ON f1.usd_usr_id = mem_usr_id AND f1.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'FIRST_NAME') ";
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f2 ON f2.usd_usr_id = mem_usr_id AND f2.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
+		$sql = $sql."	".TABLE_PREFIX."_members ";
+		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f1 ON f1.usd_usr_id = mem_usr_id AND f1.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'FIRST_NAME') ";
+		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f2 ON f2.usd_usr_id = mem_usr_id AND f2.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
 		if ($gCurrentUser->editUsers() == false)
 		{
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'BIRTHDAY' AND usf_hidden = 0) ";
+		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY' AND usf_hidden = 0) ";
 		} else {
-		$sql = $sql."	LEFT JOIN ".$g_tbl_praefix."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".$g_tbl_praefix."_user_fields WHERE usf_name_intern = 'BIRTHDAY') ";
+		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY') ";
 		}
 		$sql = $sql."WHERE ";
 		$sql = $sql."	mem_rol_id = ".$getRoleId." ";

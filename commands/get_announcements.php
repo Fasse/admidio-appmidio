@@ -16,13 +16,13 @@ require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
 
 function sql_command()
 {
-	global $gValidLogin, $gPreferences, $gCurrentUser;
+	global $gValidLogin, $gSettingsManager, $gCurrentUser;
 
 	if($gValidLogin == false)
 	{
 		msg_unauthorized();
 	}
-	else if($gPreferences['enable_announcements_module'] == 0)
+	else if($gSettingsManager->get('enable_announcements_module') == 0)
 	{
 		// das Modul ist deaktiviert
 		// $gMessage->show($gL10n->get('SYS_MODULE_DISABLED'));

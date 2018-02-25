@@ -16,8 +16,6 @@ require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
 
 function sql_command()
 {
-	global $g_tbl_praefix;
-
  	$sql = "SELECT ";
 	$sql = $sql."	org_id ";
 	$sql = $sql."	, org_longname ";
@@ -25,7 +23,7 @@ function sql_command()
 	$sql = $sql."	, org_org_id_parent ";
 	$sql = $sql."	, org_homepage ";
 	$sql = $sql."FROM ";
-	$sql = $sql."	".$g_tbl_praefix."_organizations ";
+	$sql = $sql."	".TABLE_PREFIX."_organizations ";
 
 	return $sql;
 }
