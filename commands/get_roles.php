@@ -40,7 +40,7 @@ function sql_command()
 		$sql = $sql."WHERE ";
 		$sql = $sql."	cat_type = 'ROL' ";
 		$sql = $sql."	AND rol_valid = 1 ";
-		$sql = $sql."	AND cat_name_intern <> 'CONFIRMATION_OF_PARTICIPATION' ";
+		$sql = $sql."	AND cat_name_intern <> 'EVENTS' ";
 		$sql = $sql."	AND org_shortname = '".$gCurrentOrganization->getValue('org_shortname')."' ";
 		$sql = $sql."	AND ((rol_this_list_view = 2) ";
 		$sql = $sql."		OR ((rol_this_list_view = 1) ";
