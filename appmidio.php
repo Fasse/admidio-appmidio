@@ -217,7 +217,7 @@ if ($getCommand == '')
 }
 else
 {
-	header('Content-Type: text/html; charset=utf-8');
+	header('Content-Type: application/json; charset=utf-8');
 
 	require_once(PLUGIN_PATH. '/'.$plugin_folder.'/commands/'.$possible_commands[$getCommand].'.php');
 	$sql = sql_command();
