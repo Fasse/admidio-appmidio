@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.7.0
+ * Version 1.7.1
  *
  * Plugin das für die Android-App Appmidio
  *
@@ -83,6 +83,10 @@
  *
  * Version 1.7.0: fasse
  * Datum        : 25.02.2018
+ * Änderung     : - Anpassungen für Admidio 3.3
+ *
+ * Version 1.7.1: fasse
+ * Datum        : 30.03.2018
  * Änderung     : - Anpassungen für Admidio 3.3
  *
 *****************************************************************************/
