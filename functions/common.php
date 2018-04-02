@@ -10,7 +10,7 @@
  *
 *****************************************************************************/
 
-require_once(PLUGIN_PATH. '/../adm_program/system/common.php');
+require_once($rootPath. '/adm_program/system/common.php');
 
 function json_result ($sql = '')
 {

@@ -106,22 +106,13 @@ $possible_commands = array(
 						'gmr' => 'get_member_roles'
 						);
 
-// create path to plugin
-$plugin_folder_pos = strpos(__FILE__, 'adm_plugins') + 11;
-$plugin_file_pos   = strpos(__FILE__, basename(__FILE__));
-$plugin_folder     = substr(__FILE__, $plugin_folder_pos+1, $plugin_file_pos-$plugin_folder_pos-2);
+$rootPath = dirname(dirname(__DIR__));
+$pluginFolder = basename(__DIR__);
 
-if ($plugin_debug > 1) print_r ("plugin_folder: ".$plugin_folder." ... ");
-
-if(!defined('PLUGIN_PATH'))
-{
-    define('PLUGIN_PATH', substr(__FILE__, 0, $plugin_folder_pos));
-}
-
-require_once(PLUGIN_PATH. '/../adm_program/system/common.php');
-require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
-if(file_exists(PLUGIN_PATH. '/'.$plugin_folder.'/config.php')) {
-	require_once(PLUGIN_PATH. '/'.$plugin_folder.'/config.php');
+require_once($rootPath. '/adm_program/system/common.php');
+require_once(__DIR__. '/functions/common.php');
+if(file_exists(__DIR__. '/config.php')) {
+	require_once(__DIR__. '/config.php');
 }
 
 // pruefen, ob alle Einstellungen in config.php gesetzt wurden
@@ -197,19 +188,19 @@ if ($getCommand == '')
 	}
 	if ($getQuery != '') {
 		// Aufrufen des bisherigen Plugins, da noch eine alte App-Version die Anfrage stellt
-		include (PLUGIN_PATH. '/'.$plugin_folder.'/appmidio_103.php');
+		include (__DIR__. '/appmidio_103.php');
 		exit();
 	} else {
 		// Prüfen, ob Titel gezeigt werden soll oder nicht
 		if($plg_show_title == 1) {
-			echo '<div id="plugin_'. $plugin_folder. '" class="admPluginContent">
+			echo '<div id="plugin_'. $pluginFolder. '" class="admPluginContent">
 			<div class="admPluginHeader"><h3>Appmidio</h3></div>
 			<div class="admPluginBody">';
 		}
 
 		$png_title = 'Appmidio-Plugin V'.$plugin_version;
 		$png_link = 'https://play.google.com/store/apps/details?id=de.zettem.Appmidio';
-		$qrcodepng = THEME_PATH.'/../../adm_plugins/'.$plugin_folder.'/functions/phpqrcode_png.php?text='.$png_link;
+		$qrcodepng = ADMIDIO_URL.'/'.FOLDER_PLUGINS.'/'.$pluginFolder.'/functions/phpqrcode_png.php?text='.$png_link;
 
 		echo '<a href="'.$png_link.'" target="_blank"><img src="'.$qrcodepng.'" title="'.$png_title.'" alt="'.$png_title.'" /></a>';
 
@@ -223,7 +214,7 @@ else
 {
 	header('Content-Type: application/json; charset=utf-8');
 
-	require_once(PLUGIN_PATH. '/'.$plugin_folder.'/commands/'.$possible_commands[$getCommand].'.php');
+	require_once(__DIR__. '/commands/'.$possible_commands[$getCommand].'.php');
 	$sql = sql_command();
 	print(json_result($sql));
 }

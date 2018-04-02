@@ -10,14 +10,8 @@
  *
 *****************************************************************************/
 
-require_once(PLUGIN_PATH. '/../adm_program/system/common.php');
-require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
-if (file_exists(PLUGIN_PATH. '/../adm_program/system/classes/tableroles.php')) {
-	require_once(SERVER_PATH. '/adm_program/system/classes/tableroles.php');
-} else {
-	require_once(SERVER_PATH. '/adm_program/system/classes/table_roles.php');
-}
-
+require_once($rootPath. '/adm_program/system/common.php');
+require_once($rootPath. '/'.FOLDER_PLUGINS. '/'.$pluginFolder.'/functions/common.php');
 
 function sql_command()
 {
@@ -47,11 +41,11 @@ function sql_command()
 	// Rollenobjekt erzeugen
 	$role = new TableRoles($gDb, $getRoleId);
 
-	if($gValidLogin == false)
+	if(!$gValidLogin)
 	{
 		msg_unauthorized();
 	}
-	else if($role->viewRole() == false)
+	else if(!$role->isVisible())
 	{
 		//$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 		$gMessage = 'keine Berechtigung, die Daten dieser Rolle anzuzeigen';
