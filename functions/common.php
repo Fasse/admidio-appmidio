@@ -11,7 +11,6 @@
 *****************************************************************************/
 
 require_once(PLUGIN_PATH. '/../adm_program/system/common.php');
-require_once(PLUGIN_PATH. '/../adm_program/system/classes/datetimeextended.php');
 
 function json_result ($sql = '')
 {
