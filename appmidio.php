@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.7.1
+ * Version 1.7.2
  *
  * Plugin das für die Android-App Appmidio
  *
@@ -71,23 +71,24 @@
  *
  * Version 1.5.0: fasse
  * Datum        : 07.02.2016
- * Änderung     : - Anpassungen für Admidio 3.1
+ * Änderung     : - Compatibel with Admidio 3.1
  *
  * Version 1.6.0: fasse
- * Datum        : 10.12.2016
- * Änderung     : - Anpassungen für Admidio 3.2
+ * Date         : 10.12.2016
+ * Changes      : - Compatibel with Admidio 3.2
  *
  * Version 1.6.1: fasse
- * Datum        : 23.05.2017
- * Änderung     : - Fix problem with PHP 7
+ * Date         : 23.05.2017
+ * Changes      : - Fix problem with PHP 7
  *
  * Version 1.7.0: fasse
- * Datum        : 25.02.2018
- * Änderung     : - Anpassungen für Admidio 3.3
+ * Date         : 25.02.2018
+ * Changes      : - Compatibel with Admidio 3.3
  *
- * Version 1.7.1: fasse
- * Datum        : 30.03.2018
- * Änderung     : - Anpassungen für Admidio 3.3
+ * Version 1.7.2: fasse
+ * Date         : 02.04.2018
+ * Changes      : - Compatibel with Admidio 3.3
+ *                - Members of a role weren't shown if end date wasn't 31.12.9999
  *
 *****************************************************************************/
 
