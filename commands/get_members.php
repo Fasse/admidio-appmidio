@@ -65,21 +65,21 @@ function sql_command()
 		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f2 ON f2.usd_usr_id = mem_usr_id AND f2.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'LAST_NAME') ";
 		if ($gCurrentUser->editUsers() == false)
 		{
-		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY' AND usf_hidden = 0) ";
+		    $sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY' AND usf_hidden = 0) ";
 		} else {
-		$sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY') ";
+		    $sql = $sql."	LEFT JOIN ".TABLE_PREFIX."_user_data AS f3 ON f3.usd_usr_id = mem_usr_id AND f3.usd_usf_id = (SELECT usf_id FROM ".TABLE_PREFIX."_user_fields WHERE usf_name_intern = 'BIRTHDAY') ";
 		}
 		$sql = $sql."WHERE ";
 		$sql = $sql."	mem_rol_id = ".$getRoleId." ";
 		if ($getExMembers == 0) {
-		$sql = $sql."	AND mem_end = '9999-12-31' ";
+		    $sql = $sql."	AND mem_end >= '".DATE_NOW."' ";
 		} else {
-		$sql = $sql."	AND mem_end < '9999-12-31' ";
+		    $sql = $sql."	AND mem_end < '".DATE_NOW."' ";
 		}
 		$sql = $sql."ORDER BY ";
 		$sql = $sql."	mem_leader DESC ";
 		if ($getOrderBy != '') {
-		$sql = $sql."	, ".$getOrderBy." ";
+		    $sql = $sql."	, ".$getOrderBy." ";
 		}
 
 		return $sql;
