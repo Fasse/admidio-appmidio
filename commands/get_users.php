@@ -10,8 +10,8 @@
  *
 *****************************************************************************/
 
-require_once(PLUGIN_PATH. '/../adm_program/system/common.php');
-require_once(PLUGIN_PATH. '/'.$plugin_folder.'/functions/common.php');
+require_once($rootPath. '/adm_program/system/common.php');
+require_once($rootPath. '/'.FOLDER_PLUGINS. '/'.$pluginFolder.'/functions/common.php');
 
 
 function sql_command()
