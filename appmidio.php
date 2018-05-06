@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.7.2
+ * Version 1.7.3
  *
  * Plugin das für die Android-App Appmidio
  *
@@ -89,6 +89,10 @@
  * Date         : 02.04.2018
  * Changes      : - Compatibel with Admidio 3.3
  *                - Members of a role weren't shown if end date wasn't 31.12.9999
+ *
+ * Version 1.7.3: fasse
+ * Date         : 06.05.2018
+ * Changes      : - Show current members if they have a valid membership at acutal date
  *
 *****************************************************************************/
 
