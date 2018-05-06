@@ -72,7 +72,7 @@ function sql_command()
 		$sql = $sql."WHERE ";
 		$sql = $sql."	mem_rol_id = ".$getRoleId." ";
 		if ($getExMembers == 0) {
-		    $sql = $sql."	AND mem_end >= '".DATE_NOW."' ";
+		    $sql = $sql."	AND '".DATE_NOW."' BETWEEN mem_begin AND mem_end ";
 		} else {
 		    $sql = $sql."	AND mem_end < '".DATE_NOW."' ";
 		}

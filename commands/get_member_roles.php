@@ -167,7 +167,7 @@ function sql_command()
 		$sql = $sql."	INNER JOIN ".TABLE_PREFIX."_organizations ON cat_org_id = org_id ";
 		$sql = $sql."WHERE ";
 		$sql = $sql."	mem_usr_id = ".$getUserId." ";
-		$sql = $sql."	AND mem_end = '9999-12-31' ";
+		$sql = $sql."	AND '".DATE_NOW."' BETWEEN mem_begin AND mem_end ";
 		$sql = $sql."	AND org_id <> '".$gCurrentOrganization->getValue('org_id')."' ";
 		$sql = $sql."	AND cat_type = 'ROL' ";
 		$sql = $sql."	AND rol_valid = 1 ";
