@@ -45,7 +45,7 @@ function json_result ($sql = '')
 					// wenn es sich bei dem Daten um das Land handelt, wird der Ländercode durch die Bezeichnung ersetzt
 					if ($usf_id == $gProfileFields->getProperty('COUNTRY', 'usf_id'))
 					{
-						$row['usd_value'] = $gL10n->getCountryByCode($row['usd_value']);
+						$row['usd_value'] = $gL10n->getCountryName($row['usd_value']);
 					}
 					elseif ($gProfileFields->getPropertyById($usf_id, 'usf_type') == 'DROPDOWN'
 					||      $gProfileFields->getPropertyById($usf_id, 'usf_type') == 'RADIO_BUTTON')
@@ -59,7 +59,7 @@ function json_result ($sql = '')
 				{
 					if (isset($row['dat_country']) && $row['dat_country'].'' != '')
 					{
-						$row['dat_country'] = $gL10n->getCountryByCode($row['dat_country']);
+						$row['dat_country'] = $gL10n->getCountryName($row['dat_country']);
 					}
 				}
 			}
