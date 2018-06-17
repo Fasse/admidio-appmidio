@@ -17,7 +17,7 @@ Zur Installation sind folgende Schritte durchzuführen:
 
 1.1. Im Ordner adm_plugins einen neuen Ordner mit dem Namen appmidio erstellen.
 
-1.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio_1.4.0.zip in diesen Ordner kopieren.
+1.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio-1.x.x.zip in diesen Ordner kopieren.
 
 1.3. Die Datei config_sample.php in config.php umbenenen und den eigenen Bedürfnissen anpassen.
 
@@ -40,7 +40,7 @@ Für einen Update des Plugins sind folgende Schritte durchzuführen:
 
 2.1. Alle Dateien im Pluginverzeichnis von appmidio löschen (ausser config.php).
 
-2.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio_1.4.0.zip in diesen Ordner kopieren.
+2.2. Alle Dateien des Ordners appmidio aus der entpackten Datei appmidio-1.x.x.zip in diesen Ordner kopieren.
 
 2.3. Die Datei config.php den eigenen Bedürfnissen anpassen.
      Als Vorlage kann die Datei config_sample.php verwendet werden.
