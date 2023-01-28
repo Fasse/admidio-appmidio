@@ -21,14 +21,14 @@ function json_result ($sql = '')
 	if($sql !== '')
 	{
 		// Daten aus der DB abfragen
-		// SYS_-Bezeichnungen werden mit den sprachabhängigen Bezeichnungen ersetzt
+		// SYS_-Bezeichnungen werden mit den sprachabhÃ¤ngigen Bezeichnungen ersetzt
 		$resultStatement = $gDb->query($sql);
 		while($row = $resultStatement->fetch(PDO::FETCH_ASSOC))
 		{
 			$usf_id = 0;
 			foreach($row as $key => $val)
 			{
-				// bei jeder Spalte ausser bei der Spalte usf_name_intern wird der Wert "übersetzt"
+				// bei jeder Spalte ausser bei der Spalte usf_name_intern wird der Wert "Ã¼bersetzt"
 				if ($key != 'usf_name_intern')
 				{
 					if ((substr($row[$key], 0, 4) == "SYS_") || (substr($row[$key], 0, 4) == "INS_") || (substr($row[$key], 0, 4) == "PMB_"))
@@ -42,7 +42,7 @@ function json_result ($sql = '')
 				}
 				if ($key == 'usd_value' && $usf_id > 0)
 				{
-					// wenn es sich bei dem Daten um das Land handelt, wird der Ländercode durch die Bezeichnung ersetzt
+					// wenn es sich bei dem Daten um das Land handelt, wird der LÃ¤ndercode durch die Bezeichnung ersetzt
 					if ($usf_id == $gProfileFields->getProperty('COUNTRY', 'usf_id'))
 					{
 						$row['usd_value'] = $gL10n->getCountryName($row['usd_value']);
@@ -72,7 +72,7 @@ function json_result ($sql = '')
 	}
 	else
 	{
-		// Ergebnis im JSON-Format zurückgeben
+		// Ergebnis im JSON-Format zurï¿½ckgeben
 		return json_encode($output);
 	}
 }
@@ -80,33 +80,17 @@ function json_result ($sql = '')
 
 function getCurrentDbVersion ()
 {
- 	global $gDb, $g_organization;
+ 	global $gDb;
 
-	if($gDb->query('SELECT 1 FROM '.TABLE_PREFIX.'_components', false) == false)
-	{
-		// V2
-		// in Admidio version 2 the database version was stored in preferences table
-		$sql = "SELECT ";
-		$sql = $sql."	prf_value AS db_version ";
-		$sql = $sql."FROM ";
-		$sql = $sql."	".TABLE_PREFIX."_preferences ";
-		$sql = $sql."	JOIN ".TABLE_PREFIX."_organizations ON org_id = prf_org_id ";
-		$sql = $sql."WHERE ";
-		$sql = $sql."	prf_name = 'db_version' ";
-		$sql = $sql."	AND org_shortname = '".$g_organization."' ";
-	}
-	else
-	{
-		// V3
-		// read system component
-		$sql = "SELECT ";
-		$sql = $sql."	com_version AS db_version ";
-		$sql = $sql."FROM ";
-		$sql = $sql."	".TABLE_PREFIX."_components ";
-		$sql = $sql."WHERE ";
-		$sql = $sql."	com_type = 'SYSTEM' ";
-		$sql = $sql."	AND com_name_intern = 'CORE' ";
-	}
+    // V3
+    // read system component
+    $sql = "SELECT ";
+    $sql = $sql."	com_version AS db_version ";
+    $sql = $sql."FROM ";
+    $sql = $sql."	".TABLE_PREFIX."_components ";
+    $sql = $sql."WHERE ";
+    $sql = $sql."	com_type = 'SYSTEM' ";
+    $sql = $sql."	AND com_name_intern = 'CORE' ";
 
 	// Daten aus der DB abfragen
 	$resultStatement = $gDb->query($sql);
