@@ -92,8 +92,8 @@ function sql_command()
 		$sql = $sql."	AND cat_type = 'ROL' ";
 		$sql = $sql."	AND rol_valid = 1 ";
 		$sql = $sql."	AND cat_name_intern <> 'EVENTS' ";
-		$sql = $sql."	AND ((rol_this_list_view = 2) ";
-		$sql = $sql."		OR ((rol_this_list_view = 1) ";
+		$sql = $sql."	AND ((rol_view_members_profiles = 2) ";
+		$sql = $sql."		OR ((rol_view_members_profiles = 1) ";
 		$sql = $sql."			AND ((SELECT count(mem_id) FROM ".TABLE_PREFIX."_members WHERE mem_rol_id = rol_id AND mem_usr_id = ".$gCurrentUser->getValue('usr_id')." AND mem_end = '9999-12-31') >= 1)) ";
 		$sql = $sql."		OR ((SELECT count(m.mem_id) ";
 		$sql = $sql."			FROM ";
@@ -132,8 +132,8 @@ function sql_command()
 		$sql = $sql."	AND cat_type = 'ROL' ";
 		$sql = $sql."	AND rol_valid = 1 ";
 		$sql = $sql."	AND cat_name_intern <> 'EVENTS' ";
-		$sql = $sql."	AND ((rol_this_list_view = 2) ";
-		$sql = $sql."		OR ((rol_this_list_view = 1) ";
+		$sql = $sql."	AND ((rol_view_members_profiles = 2) ";
+		$sql = $sql."		OR ((rol_view_members_profiles = 1) ";
 		$sql = $sql."			AND ((SELECT count(mem_id) FROM ".TABLE_PREFIX."_members WHERE mem_rol_id = rol_id AND mem_usr_id = ".$gCurrentUser->getValue('usr_id')." AND mem_end = '9999-12-31') >= 1)) ";
 		$sql = $sql."		OR ((SELECT count(m.mem_id) ";
 		$sql = $sql."			FROM ";
@@ -172,8 +172,8 @@ function sql_command()
 		$sql = $sql."	AND cat_type = 'ROL' ";
 		$sql = $sql."	AND rol_valid = 1 ";
 		$sql = $sql."	AND cat_name_intern <> 'EVENTS'";
-		$sql = $sql."	AND ((rol_this_list_view = 2) ";
-		$sql = $sql."		OR ((rol_this_list_view = 1) ";
+		$sql = $sql."	AND ((rol_view_members_profiles = 2) ";
+		$sql = $sql."		OR ((rol_view_members_profiles = 1) ";
 		$sql = $sql."			AND ((SELECT count(mem_id) FROM ".TABLE_PREFIX."_members WHERE mem_rol_id = rol_id AND mem_usr_id = ".$gCurrentUser->getValue('usr_id')." AND mem_end = '9999-12-31') >= 1)) ";
 		$sql = $sql."		OR ((SELECT count(m.mem_id) ";
 		$sql = $sql."			FROM ";
