@@ -54,7 +54,7 @@
  * �nderung     : - Neuerungen:
  *                  - Organisationsauswahl
  *                  - Suche nach Mitgliedern (nur mit Berechtigung f�r Benutzerverwaltung)
- *                  - Sortieren von Mitgliederlisten  (nach Alter oder Nachname oder Vorname)
+ *                  - Sortieren von Mitgliederlisten (nach Alter oder Nachname oder Vorname)
  *                - Fehlerkorrekturen/Bugfixes
  *                  - Umlaute in Terminen
  *                  - Textbezeichnungen vom Mitgliedsbeitrag-Pluigin
@@ -63,19 +63,19 @@
  *
  * Version 1.3.2: zettem
  * Datum        : 01.03.2015
- * �nderung     : - Korrektur f�r die Anzeige der Geburtstage in der Mitgliederliste
+ * �nderung     : - Korrektur für die Anzeige der Geburtstage in der Mitgliederliste
  *
  * Version 1.4.0: zettem
  * Datum        : 12.07.2015
- * �nderung     : - Anpassungen f�r Admidio 3.0
+ * �nderung     : - Anpassungen für Admidio 3.0
  *
  * Version 1.5.0: fasse
  * Datum        : 07.02.2016
- * �nderung     : - Compatibel with Admidio 3.1
+ * �nderung     : - Compatible with Admidio 3.1
  *
  * Version 1.6.0: fasse
  * Date         : 10.12.2016
- * Changes      : - Compatibel with Admidio 3.2
+ * Changes      : - Compatible with Admidio 3.2
  *
  * Version 1.6.1: fasse
  * Date         : 23.05.2017
@@ -83,11 +83,11 @@
  *
  * Version 1.7.0: fasse
  * Date         : 25.02.2018
- * Changes      : - Compatibel with Admidio 3.3
+ * Changes      : - Compatible with Admidio 3.3
  *
  * Version 1.7.2: fasse
  * Date         : 02.04.2018
- * Changes      : - Compatibel with Admidio 3.3
+ * Changes      : - Compatible with Admidio 3.3
  *                - Members of a role weren't shown if end date wasn't 31.12.9999
  *
  * Version 1.7.3: fasse
@@ -96,7 +96,7 @@
  *
  * Version 1.8.0: fasse
  * Date         : 03.03.2023
- * Changes      : - Compatibel with Admidio 4.2
+ * Changes      : - Compatible with Admidio 4.2
  *
 *****************************************************************************/
 
@@ -115,7 +115,7 @@ $possible_commands = array(
 						'gmr' => 'get_member_roles'
 						);
 
-$rootPath = dirname(dirname(__DIR__));
+$rootPath = dirname(__DIR__, 2);
 $pluginFolder = basename(__DIR__);
 
 require_once($rootPath. '/adm_program/system/common.php');
@@ -124,49 +124,49 @@ if(file_exists(__DIR__. '/config.php')) {
 	require_once(__DIR__. '/config.php');
 }
 
-// pruefen, ob alle Einstellungen in config.php gesetzt wurden
+// Prüfen, ob alle Einstellungen in config.php gesetzt wurden,
 // falls nicht, hier noch mal die Default-Werte setzen
-if(isset($plg_show_title) == false || is_numeric($plg_show_title) == false)
+if(!isset($plg_show_title) || !is_numeric($plg_show_title))
 {
     $plg_show_title = 1;
 }
 
-if(isset($plg_enable_admidio_edit) == false || is_numeric($plg_enable_admidio_edit) == false)
+if(!isset($plg_enable_admidio_edit) || !is_numeric($plg_enable_admidio_edit))
 {
     $plg_enable_admidio_edit = 0;
 }
 
-if(isset($plg_enable_admidio_mail) == false || is_numeric($plg_enable_admidio_mail) == false)
+if(!isset($plg_enable_admidio_mail) || !is_numeric($plg_enable_admidio_mail))
 {
     $plg_enable_admidio_mail = 0;
 }
 
-if(isset($plg_enable_birthday_module) == false || is_numeric($plg_enable_birthday_module) == false)
+if(!isset($plg_enable_birthday_module) || !is_numeric($plg_enable_birthday_module))
 {
     $plg_enable_birthday_module = 1;
 }
 
-if(isset($plg_birthday_anniversaries) == false || is_string($plg_birthday_anniversaries) == false)
+if(!isset($plg_birthday_anniversaries) || !is_string($plg_birthday_anniversaries))
 {
     $plg_birthday_anniversaries = "10,18,20,30,40,50,60,65,70,75,80,85,90,95,100,105,110,115,120";
 }
 
-if(isset($plg_birthday_roles) == false || is_string($plg_birthday_roles) == false)
+if(!isset($plg_birthday_roles) || !is_string($plg_birthday_roles))
 {
     $plg_birthday_roles = "";
 }
 
-if(isset($plg_excluded_categories) == false || is_string($plg_excluded_categories) == false)
+if(!isset($plg_excluded_categories) || !is_string($plg_excluded_categories))
 {
     $plg_excluded_categories = "";
 }
 
-if(isset($plg_excluded_roles) == false || is_string($plg_excluded_roles) == false)
+if(!isset($plg_excluded_roles) || !is_string($plg_excluded_roles))
 {
     $plg_excluded_roles = "";
 }
 
-if(isset($plg_excluded_fields) == false || is_string($plg_excluded_fields) == false)
+if(!isset($plg_excluded_fields) || !is_string($plg_excluded_fields))
 {
     $plg_excluded_fields = "";
 }
@@ -197,7 +197,7 @@ if ($getCommand == '')
 	}
 	if ($getQuery != '') {
 		// Aufrufen des bisherigen Plugins, da noch eine alte App-Version die Anfrage stellt
-		include (__DIR__. '/appmidio_103.php');
+        echo 'App version to old!';
 		exit();
 	} else {
 		// Prüfen, ob Titel gezeigt werden soll oder nicht
@@ -227,4 +227,3 @@ else
 	$sql = sql_command();
 	print(json_result($sql));
 }
-?>
