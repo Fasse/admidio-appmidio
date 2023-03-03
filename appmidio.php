@@ -2,13 +2,13 @@
 /******************************************************************************
  * Appmidio
  *
- * Version 1.7.3
+ * Version 1.8.0
  *
- * Plugin das für die Android-App Appmidio
+ * Plugin das fÃ¼r die Android-App Appmidio
  *
- * Compatible with Admidio version 3.3.x
+ * Compatible with Admidio version 4.2.x
  *
- * Übergaben:
+ * ï¿½bergaben:
  *
  * Copyright    : (c) 2013-2015 The Zettem Team
  * Homepage     : https://play.google.com/store/apps/details?id=de.zettem.Appmidio
@@ -19,59 +19,59 @@
  *
  * Version 1.0.1: zettem
  * Datum        : 19.01.2013
- * Änderung     : - inaktive Rollen werden nicht mehr an die App übermittelt
+ * ï¿½nderung     : - inaktive Rollen werden nicht mehr an die App ï¿½bermittelt
  *                - nur noch Anzeige von Rollenzuordnungen gem. Berechtigung
  *                - keine Fehlermeldung mehr bei Einbau des Plugins in die Admidio-Seite
  *
  * Version 1.0.2: zettem
  * Datum        : 22.01.2013
- * Änderung     : - Sicherheitslücken im Plugin geschlossen (Danke an Admidio Team für die Hinweise)
+ * ï¿½nderung     : - Sicherheitslï¿½cken im Plugin geschlossen (Danke an Admidio Team fï¿½r die Hinweise)
  *
  * Version 1.0.3: zettem
  * Datum        : 23.01.2013
- * Änderung     : - noch weitere Sicherheitslücken im Plugin geschlossen (Danke an Admidio Team für die Hinweise)
+ * ï¿½nderung     : - noch weitere Sicherheitslï¿½cken im Plugin geschlossen (Danke an Admidio Team fï¿½r die Hinweise)
  *
  * Version 1.1.0: zettem
  * Datum        : 17.02.2013
- * Änderung     : - Anzeige eines QRcodes, wenn App in Admidio integriert wird
- *                - Anzeige von ehemaligen Mitgliedern einer Rolle (über Kontext-Menü)
+ * ï¿½nderung     : - Anzeige eines QRcodes, wenn App in Admidio integriert wird
+ *                - Anzeige von ehemaligen Mitgliedern einer Rolle (ï¿½ber Kontext-Menï¿½)
  *                - Anzeige einer Geburtstagsliste
- *                - Anzeige von Ankündigungen
+ *                - Anzeige von Ankï¿½ndigungen
  *                - Integration von Google-Maps und Google-Navigator
- *                - und zudem für erste Beta-Tests (muss über config.php aktiviert werden):
- *                  - Bearbeiten von Profilen (über Admidio-Webseite)
- *                  - Bearbeiten von Rollenzugehörigkeiten (über Admidio-Webseite)
- *                  - Mailversand an Rollen (über Admidio-Webseite)
+ *                - und zudem fï¿½r erste Beta-Tests (muss ï¿½ber config.php aktiviert werden):
+ *                  - Bearbeiten von Profilen (ï¿½ber Admidio-Webseite)
+ *                  - Bearbeiten von Rollenzugehï¿½rigkeiten (ï¿½ber Admidio-Webseite)
+ *                  - Mailversand an Rollen (ï¿½ber Admidio-Webseite)
  *
  * Version 1.2.0: zettem
  * Datum        : 02.04.2013
- * Änderung     : - Anzeige der Leiter von Rollen
+ * ï¿½nderung     : - Anzeige der Leiter von Rollen
  *                - Anzeige von Terminen
- *                - Anpassungen für Admidio 2.4.x
+ *                - Anpassungen fï¿½r Admidio 2.4.x
  *
  * Version 1.3.0: zettem
  * Datum        : 08.12.2014
- * Änderung     : - Neuerungen:
+ * ï¿½nderung     : - Neuerungen:
  *                  - Organisationsauswahl
- *                  - Suche nach Mitgliedern (nur mit Berechtigung für Benutzerverwaltung)
+ *                  - Suche nach Mitgliedern (nur mit Berechtigung fï¿½r Benutzerverwaltung)
  *                  - Sortieren von Mitgliederlisten  (nach Alter oder Nachname oder Vorname)
  *                - Fehlerkorrekturen/Bugfixes
  *                  - Umlaute in Terminen
  *                  - Textbezeichnungen vom Mitgliedsbeitrag-Pluigin
- *                  - Ermittlung von Jubiläen im get_birthday-Command
+ *                  - Ermittlung von Jubilï¿½en im get_birthday-Command
  *                 - div. Optimierungen
  *
  * Version 1.3.2: zettem
  * Datum        : 01.03.2015
- * Änderung     : - Korrektur für die Anzeige der Geburtstage in der Mitgliederliste
+ * ï¿½nderung     : - Korrektur fï¿½r die Anzeige der Geburtstage in der Mitgliederliste
  *
  * Version 1.4.0: zettem
  * Datum        : 12.07.2015
- * Änderung     : - Anpassungen für Admidio 3.0
+ * ï¿½nderung     : - Anpassungen fï¿½r Admidio 3.0
  *
  * Version 1.5.0: fasse
  * Datum        : 07.02.2016
- * Änderung     : - Compatibel with Admidio 3.1
+ * ï¿½nderung     : - Compatibel with Admidio 3.1
  *
  * Version 1.6.0: fasse
  * Date         : 10.12.2016
@@ -93,6 +93,10 @@
  * Version 1.7.3: fasse
  * Date         : 06.05.2018
  * Changes      : - Show current members if they have a valid membership at acutal date
+ *
+ * Version 1.8.0: fasse
+ * Date         : 03.03.2023
+ * Changes      : - Compatibel with Admidio 4.2
  *
 *****************************************************************************/
 
@@ -185,7 +189,7 @@ if ($plugin_debug)
 
 if ($getCommand == '')
 {
-	// Prüfen, ob Aufruf von einer alten App-Version erfolgt
+	// PrÃ¼fen, ob Aufruf von einer alten App-Version erfolgt
 	$getQuery = '';
 	if(isset($_POST['query']))
 	{
@@ -196,7 +200,7 @@ if ($getCommand == '')
 		include (__DIR__. '/appmidio_103.php');
 		exit();
 	} else {
-		// Prüfen, ob Titel gezeigt werden soll oder nicht
+		// PrÃ¼fen, ob Titel gezeigt werden soll oder nicht
 		if($plg_show_title == 1) {
 			echo '<div id="plugin_'. $pluginFolder. '" class="admPluginContent">
 			<div class="admPluginHeader"><h3>Appmidio</h3></div>
@@ -209,7 +213,7 @@ if ($getCommand == '')
 
 		echo '<a href="'.$png_link.'" target="_blank"><img src="'.$qrcodepng.'" title="'.$png_title.'" alt="'.$png_title.'" /></a>';
 
-		// Prüfen, ob Titel gezeigt werden soll oder nicht
+		// PrÃ¼fen, ob Titel gezeigt werden soll oder nicht
 		if($plg_show_title == 1) {
 			echo '</div></div>';
 		}
