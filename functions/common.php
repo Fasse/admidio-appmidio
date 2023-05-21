@@ -29,7 +29,7 @@ function json_result ($sql = '')
 			foreach($row as $key => $val)
 			{
 				// bei jeder Spalte ausser bei der Spalte usf_name_intern wird der Wert "übersetzt"
-				if ($key != 'usf_name_intern')
+				if ($key != 'usf_name_intern' && (string) $row[$key] != '')
 				{
 					if ((substr($row[$key], 0, 4) == "SYS_") || (substr($row[$key], 0, 4) == "INS_") || (substr($row[$key], 0, 4) == "PMB_"))
 					{
