@@ -24,8 +24,8 @@ function sql_command()
 	$sql = $sql."	, org_shortname ";
 	$sql = $sql."	, org_org_id_parent ";
 	$sql = $sql."	, org_homepage ";
-	$sql = $sql."	, ".$gSettingsManager->get('enable_announcements_module')." AS enable_announcements_module ";
-	$sql = $sql."	, ".$gSettingsManager->get('enable_dates_module')." AS enable_dates_module ";
+	$sql = $sql."	, ".$gSettingsManager->get('announcements_module_enabled')." AS enable_announcements_module ";
+	$sql = $sql."	, ".$gSettingsManager->get('events_module_enabled')." AS enable_dates_module ";
 	$sql = $sql."	, ".$plg_enable_birthday_module." AS enable_birthday_module ";
 	$sql = $sql."	, ".$plg_enable_admidio_edit." AS enable_admidio_edit ";
 	$sql = $sql."	, ".$plg_enable_admidio_mail." AS enable_admidio_mail ";

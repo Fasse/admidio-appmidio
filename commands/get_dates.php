@@ -22,7 +22,7 @@ function sql_command()
 	{
 		msg_unauthorized();
 	}
-	else if($gSettingsManager->get('enable_dates_module') == 0)
+	else if($gSettingsManager->get('events_module_enabled') == 0)
 	{
 		// das Modul ist deaktiviert
 		// $gMessage->show($gL10n->get('SYS_MODULE_DISABLED'));
@@ -48,7 +48,7 @@ function sql_command()
                      , dat_usr_id_change
                      , IFNULL(f3.usd_value, \'\') AS upd_first_name
                      , IFNULL(f4.usd_value, \'\') AS upd_last_name
-                  FROM '.TBL_DATES.'
+                  FROM '.TBL_EVENTS.'
                   JOIN '.TBL_CATEGORIES.' ON cat_id = dat_cat_id
                   LEFT JOIN '.TBL_ROOMS.' ON room_id = dat_room_id
                   LEFT JOIN '.TBL_USER_DATA.' AS f1 ON f1.usd_usr_id = dat_usr_id_create AND f1.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'FIRST_NAME\')
@@ -56,7 +56,7 @@ function sql_command()
                   LEFT JOIN '.TBL_USER_DATA.' AS f3 ON f3.usd_usr_id = dat_usr_id_change AND f3.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'FIRST_NAME\')
                   LEFT JOIN '.TBL_USER_DATA.' AS f4 ON f4.usd_usr_id = dat_usr_id_change AND f4.usd_usf_id = (SELECT usf_id FROM '.TBL_USER_FIELDS.' WHERE usf_name_intern = \'LAST_NAME\')
                  WHERE (dat_begin >= \''.DATE_NOW.' 00:00:00\' OR dat_end > \''.DATE_NOW.' 00:00:00\')
-                   AND dat_cat_id IN ('.implode(',', array_merge(array(0), $gCurrentUser->getAllVisibleCategories('DAT'))).')
+                   AND dat_cat_id IN ('.implode(',', array_merge(array(0), $gCurrentUser->getAllVisibleCategories('EVT'))).')
                  ORDER BY dat_begin ';
 
         return $sql;

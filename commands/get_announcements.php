@@ -2,7 +2,7 @@
 /******************************************************************************
  * Appmidio Command get_announcements.php
  *
- * Funktion fuer das Admidio-Plugin Appmidio, um die Ankündigungen auszulesen
+ * Funktion fuer das Admidio-Plugin Appmidio, um die Ankï¿½ndigungen auszulesen
  *
  * Copyright    : (c) 2013-2015 The Zettem Team
  * Homepage     : https://play.google.com/store/apps/details?id=de.zettem.Appmidio
@@ -22,11 +22,11 @@ function sql_command()
 	{
 		msg_unauthorized();
 	}
-	else if($gSettingsManager->get('enable_announcements_module') == 0)
+	else if($gSettingsManager->get('announcements_module_enabled') == 0)
 	{
 		// das Modul ist deaktiviert
 		// $gMessage->show($gL10n->get('SYS_MODULE_DISABLED'));
-		msg_not_found('Das Modul Ankündigungen ist deaktiviert.');
+		msg_not_found('Das Modul Ankï¿½ndigungen ist deaktiviert.');
 	}
 	else
 	{
