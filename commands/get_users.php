@@ -31,7 +31,7 @@ function sql_command()
 	{
 		msg_unauthorized();
 	}
-	else if($gCurrentUser->editUsers() == false)
+	else if($gCurrentUser->isAdministratorUsers() == false)
 	{
 		//$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 		$gMessage = 'Keine Berechtigung, direkt nach Benutzern zu suchen';

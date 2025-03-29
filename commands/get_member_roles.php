@@ -10,6 +10,8 @@
  *
 *****************************************************************************/
 
+use adm_plugins\adm_program\system\classes\User;
+
 require_once($rootPath. '/adm_program/system/common.php');
 require_once($rootPath. '/'.FOLDER_PLUGINS. '/'.$pluginFolder.'/functions/common.php');
 

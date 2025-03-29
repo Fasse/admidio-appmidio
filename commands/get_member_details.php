@@ -10,6 +10,8 @@
  *
 *****************************************************************************/
 
+use adm_plugins\adm_program\system\classes\User;
+
 require_once($rootPath. '/adm_program/system/common.php');
 require_once($rootPath. '/'.FOLDER_PLUGINS. '/'.$pluginFolder.'/functions/common.php');
 
@@ -84,7 +86,7 @@ function sql_command()
 		$sql = $sql."	INNER JOIN ".TABLE_PREFIX."_categories ON cat_id = usf_cat_id ";
 		$sql = $sql."WHERE ";
 		$sql = $sql."	usd_usr_id = ".$getUserId." ";
-		if ($gCurrentUser->editUsers() == false)
+		if ($gCurrentUser->isAdministratorUsers() == false)
 		{
 		$sql = $sql."	AND ((usf_hidden = 0) OR (usd_usr_id = ".$gCurrentUser->getValue('usr_id').")) ";
 		}
